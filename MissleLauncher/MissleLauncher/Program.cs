@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MissleLauncher.Menus;
+using System;
 
 namespace MissleLauncher
 {
@@ -6,7 +7,8 @@ namespace MissleLauncher
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MainMenu main = new MainMenu();
+            main.start();
         }
     }
 }

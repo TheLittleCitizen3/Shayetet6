@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MissleLauncher.Missle
+namespace MissleLauncher.Missles
 {
     class Missle : IMissle
     {
         public string Missletype { get; set; }
         public int MissleLaunchChance { get ; set; }
         public bool MissleLaunched { get; set ; }
+
+        public Missle(string MissleType, int MissleLaunchChance)
+        {
+            this.Missletype = MissleType;
+            this.MissleLaunchChance = MissleLaunchChance;
+        }
 
         public void Launch()
         {

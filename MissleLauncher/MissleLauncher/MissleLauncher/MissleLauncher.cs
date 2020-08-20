@@ -7,57 +7,65 @@ namespace MissleLauncher.MissleLauncher
     class MissleLauncher : IMissleLauncher
     {
         public List<IMissle> MissleInventory { get ; set ; }
-        public int MissleCount { get ; set ; }
+        public int MissleInventoryCount { get ; set ; }
+
+        public MissleLauncher()
+        {
+            MissleInventory = new List<IMissle>();
+            MissleInventoryCount = default;
+
+        }
 
         public void AddMissle(IMissle missle)
         {
             MissleInventory.Add(missle);
-            MissleCount++;
+            MissleInventoryCount++;
             Console.WriteLine($"The Missle {missle.Missletype} was added");
         }
 
-        public void MissleLaunch(string missleType, int missleCount)
+        public void MissleLaunch(List<IMissle> MisslesToLaounch)
         {
-            if (ValidateMissleExist(missleType, missleCount))
+            int countOfMissleToLaunch = MisslesToLaounch.Count();
+            int countOfSuccessfulLaunch = default;
+            foreach (var missle in MisslesToLaounch)
             {
-                
-                for (int i = 0; i < missleCount; i++)
+                var missleInLauncher = MissleInventory.Find(m => m == missle);
+                missleInLauncher.Launch();
+                if (isLaunchedSuccessfully(missleInLauncher))
                 {
-                    var missleToLaunch = MissleInventory.SingleOrDefault(item => item.Missletype == missleType);
-                    missleToLaunch.Launch();
+                    countOfSuccessfulLaunch++;
+                    MissleInventory.Remove(missleInLauncher);
+                    MissleInventoryCount--;
                 }
-            }
-            else
-            {
-                Console.WriteLine("There is not enough Missles to launch");
-            }
 
+            }
+            Console.WriteLine($"{countOfSuccessfulLaunch} Missles successfully fired out of: {countOfMissleToLaunch}");
         }
 
         public void PrintMissleCount()
         {
-            Console.WriteLine($"There Are: {MissleCount} missles");
+            Console.WriteLine($"There Are: {MissleInventoryCount} missles");
         }
 
         public void PrintMissleInventory()
         {
             int counter = 1;
+            if (MissleInventory.Count == 0)
+            {
+                Console.WriteLine("there are no missles loaded");
+            }
             foreach(var missle in MissleInventory)
             {
                 Console.WriteLine($"Missle number {counter}: {missle.Missletype}");
             }
         }
-        private bool ValidateMissleExist(string missleType, int missleCount)
+        private bool isLaunchedSuccessfully(IMissle missle)
         {
-
-            
-            int count = MissleInventory.Where(missle => missle.Missletype == missleType).Count();
-            if (count >= missleCount)
+            if (missle.MissleLaunched && missle.MissleLaunchChance == 0)
             {
-                return true;
+                return false;
             }
-            return false;
-
+            return true;
         }
     }
 }
