@@ -12,5 +12,7 @@ namespace MissleLauncher
         public void PrintMissleInventory();
         public void PrintMissleCount();
         public void AddMissle(IMissle missle);
+        public void RemoveMissle(int missleIndex);
+        public void RemoveAllMissles();
     }
 }

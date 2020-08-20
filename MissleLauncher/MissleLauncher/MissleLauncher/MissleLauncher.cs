@@ -57,6 +57,7 @@ namespace MissleLauncher.MissleLauncher
             foreach(var missle in MissleInventory)
             {
                 Console.WriteLine($"Missle number {counter}: {missle.Missletype}");
+                counter++;
             }
         }
         private bool isLaunchedSuccessfully(IMissle missle)
@@ -66,6 +67,18 @@ namespace MissleLauncher.MissleLauncher
                 return false;
             }
             return true;
+        }
+
+        public void RemoveMissle(int missleIndex)
+        {
+            Console.WriteLine($"Removing missle from Type: {MissleInventory[missleIndex].Missletype} at place: {missleIndex+1}");
+            MissleInventory.RemoveAt(missleIndex);
+        }
+
+        public void RemoveAllMissles()
+        {
+            Console.WriteLine("Removing all Missle Inventory");
+            MissleInventory.Clear();
         }
     }
 }

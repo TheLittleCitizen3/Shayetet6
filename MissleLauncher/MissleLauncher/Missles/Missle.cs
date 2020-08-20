@@ -26,7 +26,7 @@ namespace MissleLauncher.Missles
             
         }
 
-        public bool MissleLaunchCalc()
+        public virtual bool MissleLaunchCalc()
         {
             Random rand = new Random();
             return rand.Next(100) <= MissleLaunchChance;

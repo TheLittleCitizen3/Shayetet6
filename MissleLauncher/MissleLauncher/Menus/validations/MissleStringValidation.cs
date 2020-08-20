@@ -1,25 +1,26 @@
 ﻿using MenuBuilder.menu;
+using MissleLauncher.Factory;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MissleLauncher.Menus.validations
 {
-    class IntInputValidation : IInputvalidation
+    class MissleStringValidation : IInputvalidation
     {
+        private MissleFactory MissleFactory;
+
+        public MissleStringValidation()
+        {
+            MissleFactory = new MissleFactory();
+        }
         public bool Validate(string userInput)
         {
-            int num;
-            if (!int.TryParse(userInput, out num))
-            {
-                return false;
-            }
-            if (num <= 0)
+            if (MissleFactory.getMissle(userInput) == null)
             {
                 return false;
             }
             return true;
-
         }
     }
 }

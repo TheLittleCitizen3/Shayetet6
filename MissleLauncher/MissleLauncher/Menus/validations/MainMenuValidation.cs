@@ -11,7 +11,7 @@ namespace MissleLauncher.Menus.validations
         public bool Validate(string userInput)
         {
             int choice = int.Parse(userInput);
-            return choice >= 3 && choice <= 3;
+            return choice >= 1 && choice <= 5;
         }
     }
 }

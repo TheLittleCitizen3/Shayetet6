@@ -8,7 +8,8 @@ namespace MissleLauncher
         static void Main(string[] args)
         {
             MainMenu main = new MainMenu();
-            main.start();
+            main.Start();
+
         }
     }
 }

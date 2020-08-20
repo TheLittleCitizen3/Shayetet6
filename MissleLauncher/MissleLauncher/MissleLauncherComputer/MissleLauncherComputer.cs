@@ -11,6 +11,11 @@ namespace MissleLauncher.MissleLauncherComputer
     {
         public IMissleLauncher MissleLauncher { get ; set ; }
 
+        public MissleLauncherComputer(IMissleLauncher missleLauncher)
+        {
+            MissleLauncher = missleLauncher;
+        }
+
         public bool CheckMissleQunatity(string misslesToLaounch, int numOfMissles)
         {
             int count = MissleLauncher.MissleInventory.Where(missle => missle.Missletype == misslesToLaounch).Count();
