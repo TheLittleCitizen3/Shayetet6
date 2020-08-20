@@ -19,6 +19,8 @@ namespace MissleLauncher.Factory
                     return new Missle("BALLISTIC", 50);
                 case "CRUISE":
                     return new Missle("CRUISE", 20);
+                case "LONGRANGE":
+                    return new LongRangeMissle("LONGRANGE", 100);
                 default:
                     return null;
             }

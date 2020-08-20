@@ -61,7 +61,7 @@ namespace MissleLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Torpedo, Ballistic, Cruis.
+        ///   Looks up a localized string similar to Torpedo, Ballistic, Cruis, Longrange.
         /// </summary>
         internal static string misslesList {
             get {
