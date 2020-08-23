@@ -26,6 +26,11 @@ namespace MissleLauncher.Menus.MainMenuF
             string misslesList = Resources.misslesList;
             Console.WriteLine($"Enter Missle Type ({misslesList}):");
             string missleType = Console.ReadLine().ToUpper();
+            if (missleType == "TOTALWAR")
+            {
+                MissleLauncherComputer.LaounchAllMissles();
+                return;
+            }
             while (!validations[0].Validate(missleType))
             {
                 Console.WriteLine("Please enter valid missle type");
